@@ -136,7 +136,7 @@ def evaluate_accuracy(data_iterator, net, ctx, loss_fun, num_classes):
     a given data iterator. (Either Train/Test data)
     It takes in the loss function used too!
     """
-    acc = mx.metric.Accuracy()
+    acc = mx.gluon.metric.Accuracy()
     loss_avg = 0.
     for i, ((data, length), label) in enumerate(data_iterator):
         data = data.as_in_context(ctx)  # .reshape((-1,784))

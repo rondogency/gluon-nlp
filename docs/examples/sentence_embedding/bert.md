@@ -121,7 +121,7 @@ bert_classifier.hybridize(static_alloc=True)
 loss_function = mx.gluon.loss.SoftmaxCELoss()
 loss_function.hybridize(static_alloc=True)
 
-metric = mx.metric.Accuracy()
+metric = mx.gluon.metric.Accuracy()
 ```
 
 ## Data preprocessing for BERT
@@ -360,7 +360,7 @@ def deployment(net, prefix, dataloader):
     net.export(prefix, epoch=0)
     print('Saving quantized model at ', prefix)
     print('load symbol file directly as SymbolBlock for model deployment.')
-    static_net = mx.gluon.SymbolBlock.imports('{}-symbol.json'.format(prefix), 
+    static_net = mx.gluon.SymbolBlock.imports('{}-symbol.json'.format(prefix),
                                     ['data0', 'data1', 'data2'],
                                     '{}-0000.params'.format(prefix))
     static_net.hybridize(static_alloc=True, static_shape=True)

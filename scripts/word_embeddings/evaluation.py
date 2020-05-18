@@ -234,7 +234,7 @@ def evaluate_analogy(args, token_embedding, ctx, logfile=None, global_step=0):
             dataset_coded_batched = mx.gluon.data.DataLoader(
                 dataset_coded, batch_size=args.eval_batch_size)
 
-            acc = mx.metric.Accuracy()
+            acc = mx.gluon.metric.Accuracy()
             for batch in dataset_coded_batched:
                 batch = batch.as_in_context(ctx)
                 words1, words2, words3, words4 = (batch[:, 0], batch[:, 1],
